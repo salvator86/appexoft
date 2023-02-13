@@ -1,0 +1,31 @@
+<div class="pokemon-page">
+  <div class="pokemon-page__pokemon-side">
+    <div>
+      <mat-paginator [length]="pokemonAmount"
+                     [pageSize]="12"
+                     aria-label="Select page"
+                     (page)="pageEvent = $event"
+                     #paginator
+      >
+      </mat-paginator>
+    </div>
+    <div class="pokemon-page__pokemon-list">
+      <div *ngFor="let pokemon of pokemon |
+      slice:((paginator.pageIndex)*paginator.pageSize):((paginator.pageIndex+1)*paginator.pageSize)">
+        <mat-card (click)="getInfo(pokemon.url)" class="pokemon-page__pokemon-list__button">
+          <mat-card-content>
+            <mat-card-title class="pokemon-list__pokemon-title">{{pokemon.name}}</mat-card-title>
+          </mat-card-content>
+        </mat-card>
+    </div>
+    </div>
+  </div>
+  <div class="pokemon-page__info">
+    <ng-container *ngIf="pokemonInfo">
+      <app-pokemon-info
+        [pokemonInfo]="pokemonInfo"
+      >
+      </app-pokemon-info>
+      </ng-container>
+  </div>
+</div>

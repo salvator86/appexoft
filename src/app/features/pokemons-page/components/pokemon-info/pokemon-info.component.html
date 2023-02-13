@@ -1,0 +1,21 @@
+<mat-card>
+  <img mat-card-image src="{{pokemonInfo.sprites.front_default}}" alt="photo">
+  <mat-card-title class="pokemon-title">{{pokemonInfo.name}}</mat-card-title>
+  <mat-card-subtitle>
+    Abilities:
+    <ul>
+      <li *ngFor="let ability of pokemonInfo.abilities">
+        {{ability.ability.name}}
+      </li>
+    </ul>
+  </mat-card-subtitle>
+  <mat-card-subtitle>
+    Types:
+    <ul>
+      <li *ngFor="let types of pokemonInfo.types">
+        {{types.type.name}}
+      </li>
+    </ul>
+  </mat-card-subtitle>
+</mat-card>
+
